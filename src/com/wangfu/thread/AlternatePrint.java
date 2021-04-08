@@ -1,8 +1,11 @@
-package com.wangfu;
+package com.wangfu.thread;
 
 /**
- * @author wangguolong
  * 两个线程交替打印 A1B2C3D4..
+ *
+ * @author Wang Guolong
+ * @version 1.0
+ * @date 2021/2/19 2:31 下午
  */
 public class AlternatePrint {
     static class SynchronizedWork implements Runnable {
