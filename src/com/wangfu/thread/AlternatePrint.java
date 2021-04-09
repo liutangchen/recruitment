@@ -24,10 +24,13 @@ public class AlternatePrint {
                 synchronized (lock) {
                     System.out.println(ch);
                     lock.notify();
-                    try {
-                        lock.wait();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+                    // 此处判断，是为了程序能够正常结束，否则程序将一直等待下去，耗费系统资源。
+                    if (ch != chars[chars.length - 1]) {
+                        try {
+                            lock.wait();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }
@@ -42,6 +45,6 @@ public class AlternatePrint {
         Thread numberThread = new Thread(numberWork);
         characterThread.start();
         numberThread.start();
-        Thread.sleep(5000);
+        // Thread.sleep(5000);
     }
 }
