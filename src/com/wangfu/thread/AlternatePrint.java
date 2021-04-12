@@ -45,6 +45,5 @@ public class AlternatePrint {
         Thread numberThread = new Thread(numberWork);
         characterThread.start();
         numberThread.start();
-        // Thread.sleep(5000);
     }
 }

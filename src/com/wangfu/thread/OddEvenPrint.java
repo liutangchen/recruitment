@@ -17,7 +17,6 @@ public class OddEvenPrint {
         Thread oddThread = new Thread(oddWork);
         evenThread.start();
         oddThread.start();
-        System.out.println("main");
     }
 
     static class Work implements Runnable {
@@ -33,11 +32,6 @@ public class OddEvenPrint {
             while (count <= 100) {
                 synchronized (lock) {
                     System.out.println(count++);
-                    try {
-                        Thread.sleep(100);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
                     lock.notify();
                     // 此处判断，是为了打印完了100个数字后，程序能够正常结束，否则程序将一直等待下去，耗费系统资源。
                     if (count <= 100) {
